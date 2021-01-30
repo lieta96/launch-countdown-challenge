@@ -54,11 +54,11 @@ body{
     border-bottom: solid 1px hsl(234, 17%, 12%);
 
 }
-.bg-top-seconds{
-  animation: flipInX; /* referring directly to the animation's @keyframe declaration */
-    animation-duration: 1s; /* don't forget to set a duration! */
-    animation-iteration-count: infinite
-}
+/*.bg-top-seconds{
+/*  animation: flipInX; /* referring directly to the animation's @keyframe declaration */
+ /*   animation-duration: 1s; /* don't forget to set a duration! */
+   /* animation-iteration-count: infinite
+}*/
 .bg-bottom{
     height: 50px;
     width: 100px;
@@ -71,7 +71,7 @@ body{
 }
 
 
-/*IDEA ANIMACION JS 
+/*IDEA ANIMACION JS  -- quería conseguir un flip clock
 IF HOUR ==0 quitar clase que esté relacinada solo con la animación; ie la animación ocurre porque está ligada a esa clase*/
 .card{
     display: inline-flex;
