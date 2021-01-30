@@ -1,0 +1,224 @@
+/*
+Primary
+Grayish blue: hsl(237, 18%, 59%)
+Soft red: hsl(345, 95%, 68%)
+
+Neutral
+White: hsl(0, 0%, 100%)
+Dark desaturated blue: hsl(236, 21%, 26%)
+Very dark blue: hsl(235, 16%, 14%)
+Very dark (mostly black) blue: hsl(234, 17%, 12%)
+*/
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+a:link, a:visited, a:active {
+    text-decoration:none;
+} .enter{
+    display: none;
+}
+body{
+    position: relative;
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 14px;
+    width: 100%;
+    height: 100vh;  
+    background-image: 
+        url(../images/bg-stars.svg),
+        url(../images/pattern-hills.svg);
+    background-position: 50% 100%;
+       background-repeat: no-repeat;
+    background-color:hsl(234, 17%, 12%);
+    text-align: center;
+}
+.main-title{
+    color: hsl(0, 0%, 100%);
+    text-transform: uppercase;
+    padding: 70px 0 70px 0;
+    font-size: 20px;
+    letter-spacing: 5px;
+}
+.countdown{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*------cajas del tiempo*/
+.bg-top{
+    height: 50px;
+    width: 100px;
+    background-color: hsl(236, 21%, 26%);
+    border-radius: 5px 5px 0 0;
+    border-bottom: solid 1px hsl(234, 17%, 12%);
+
+}
+.bg-top-seconds{
+  animation: flipInX; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 1s; /* don't forget to set a duration! */
+    animation-iteration-count: infinite
+}
+.bg-bottom{
+    height: 50px;
+    width: 100px;
+    background-color: hsl(236, 21%, 26%);
+    border-radius: 0 0 5px 5px;
+    -webkit-box-shadow: 0px 6px 5px -1px rgba(25,26,36,1);
+    -moz-box-shadow: 0px 6px 5px -1px rgba(25,26,36,1);
+    box-shadow: 0px 6px 5px -1px rgba(25,26,36,1);
+
+}
+
+
+/*IDEA ANIMACION JS 
+IF HOUR ==0 quitar clase que esté relacinada solo con la animación; ie la animación ocurre porque está ligada a esa clase*/
+.card{
+    display: inline-flex;
+    flex-direction: column    ;
+    position: relative;
+}
+
+.left-circle {
+    position: absolute;
+    width: 5px;
+    height: 10px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius:20px;
+    background: hsl(234, 17%, 12%);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+}
+.right-circle {
+    position: absolute;
+    width: 5px; 
+    height: 10px;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius:20px;
+    background: hsl(234, 17%, 12%);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.time{
+    position: absolute;
+    font-size: 50px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.card-container{
+    display: inline-flex;
+    flex-direction: column;
+    margin: 20px    ;
+}
+.text-time{
+    align-self: center;
+}
+/*--------------------*/
+.time-container{
+    display: inline-block;
+}
+.time{
+    margin: 20px;
+    color:hsl(345, 95%, 68%);
+    font-size: 50px;
+    
+}
+.time-text{
+    color: hsl(237, 18%, 59%);
+    text-transform: uppercase;
+    margin-top:5px;
+    font-size:14px;
+}
+
+/*--------footer---------*/
+footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+.social-media{
+    margin: 20px;
+}
+.icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    margin: 10px;
+  }
+  .icon-pinterest {
+    background-image: url(../images/icon-pinterest.svg);
+  }
+  .icon-facebook {
+    background-image: url(../images/icon-facebook.svg);
+  }
+  .icon-instagram {
+    background-image: url(../images/icon-instagram.svg);
+  }
+  .icon:hover, .icon:focus  {
+    filter:invert(55%) sepia(15%) saturate(6441%) hue-rotate(311deg) brightness(101%) contrast(96%);
+  }
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+    margin: 20px;
+    color:hsl(237, 18%, 59%)
+
+}
+.attribution a { color:hsl(345, 95%, 68%); }
+
+@media (max-width: 600px){
+    .enter {display: inherit;}
+    .bg-top{
+        height: 30px;
+        width: 60px;
+        background-color: hsl(236, 21%, 26%);
+        border-radius: 5px 5px 0 0;
+        border-bottom: solid 1px hsl(234, 17%, 12%);
+  
+    }
+    .bg-bottom{
+        height: 30px;
+        width: 60px;
+        background-color: hsl(236, 21%, 26%);
+        border-radius: 0 0 5px 5px;
+        }
+        .card-container{
+            margin: 10px;
+        }
+
+    /*IDEA ANIMACION JS 
+    IF HOUR ==0 quitar clase que esté relacinada solo con la animación; ie la animación ocurre porque está ligada a esa clase*/
+    
+    .left-circle {
+        position: absolute;
+        width: 2px;
+        height: 4px;
+        border-bottom-right-radius: 20px;
+        border-top-right-radius:20px;
+        }
+    .right-circle {
+        position: absolute;
+        width: 2px; 
+        height: 4px;
+        border-bottom-left-radius: 20px;
+        border-top-left-radius:20px;
+    }
+    .time{
+        margin: 10px;;
+        font-size: 30px;
+    }
+    .time-text{
+        font-size: 12px;
+    }
+    
+
+}
