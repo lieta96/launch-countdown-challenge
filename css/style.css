@@ -45,40 +45,53 @@ body{
     justify-content: center;
     align-items: center;
 }
-/*------cajas del tiempo*/
-.bg-top{
-    height: 50px;
-    width: 100px;
-    background-color: hsl(236, 21%, 26%);
-    border-radius: 5px 5px 0 0;
-    border-bottom: solid 1px hsl(234, 17%, 12%);
-
+/*------COUNTDOWN--------*/
+.card-container{
+    display: inline-flex;
+    flex-direction: column;
+    margin: 20px    ;
 }
-/*.bg-top-seconds{
-/*  animation: flipInX; /* referring directly to the animation's @keyframe declaration */
- /*   animation-duration: 1s; /* don't forget to set a duration! */
-   /* animation-iteration-count: infinite
-}*/
-.bg-bottom{
-    height: 50px;
-    width: 100px;
-    background-color: hsl(236, 21%, 26%);
-    border-radius: 0 0 5px 5px;
-    -webkit-box-shadow: 0px 6px 5px -1px rgba(25,26,36,1);
-    -moz-box-shadow: 0px 6px 5px -1px rgba(25,26,36,1);
-    box-shadow: 0px 6px 5px -1px rgba(25,26,36,1);
-
-}
-
-
-/*IDEA ANIMACION JS  -- quería conseguir un flip clock
-IF HOUR ==0 quitar clase que esté relacinada solo con la animación; ie la animación ocurre porque está ligada a esa clase*/
 .card{
     display: inline-flex;
     flex-direction: column    ;
     position: relative;
 }
-
+.bg-card{
+    position: relative;
+    height: 100px;
+    width: 100px;
+    background-color: hsl(236, 21%, 26%);
+    border-radius: 5px;
+    perspective: 200px;
+    -webkit-box-shadow: 0px 6px 5px -1px rgba(25,26,36,1);
+    -moz-box-shadow: 0px 6px 5px -1px rgba(25,26,36,1);
+    box-shadow: 0px 6px 5px -1px rgba(25,26,36,1);
+}
+.bg-top{
+    position: absolute;
+    top:0;
+    height: 100px;
+    width: 100px;
+    background-color: hsl(236, 21%, 26%);
+    border-radius: 5px ;
+    border-top: solid 1px hsl(234, 17%, 12%);
+}
+.bg-bottom{
+    position: absolute;
+    bottom: 0;
+    height: 100px;
+    width: 100px;
+    background-color: hsl(236, 21%, 26%);
+    border-radius: 5px;   
+}
+.line{
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    border-top: solid 1px rgba(25,26,36,1);
+    bottom: 50%;
+    z-index: 1000;
+}
 .left-circle {
     position: absolute;
     width: 5px;
@@ -111,15 +124,9 @@ IF HOUR ==0 quitar clase que esté relacinada solo con la animación; ie la anim
     bottom: 0;
     left: 0;
 }
-.card-container{
-    display: inline-flex;
-    flex-direction: column;
-    margin: 20px    ;
-}
 .text-time{
     align-self: center;
 }
-/*--------------------*/
 .time-container{
     display: inline-block;
 }
@@ -135,8 +142,71 @@ IF HOUR ==0 quitar clase que esté relacinada solo con la animación; ie la anim
     margin-top:5px;
     font-size:14px;
 }
-
-/*--------footer---------*/
+/*-----------COUNTDOWN FLIP ANIMATION SECONDS----------*/
+.bg-top-seconds{
+    animation: rotationTop; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 1s; /* don't forget to set a duration! */
+    animation-iteration-count: infinite
+}
+.bg-bottom-seconds {
+    animation: rotationBottom; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 1s; /* don't forget to set a duration! */
+    animation-iteration-count: infinite;
+    animation-delay: .5s;
+}
+@keyframes rotationTop{
+    0%{ transform: rotate3d(-1,0,0,0deg)
+    }
+    50%  {
+        transform: rotate3d(-1,0,0,0deg);
+    }
+    100% {
+        transform: rotate3d(-1,0,0,90deg);
+    }
+    }
+@keyframes rotationBottom{
+    0%{ transform: rotate3d(-1,0,0,-90deg)
+    }
+    50%  {
+        transform: rotate3d(-1,0,0,-90deg);
+        opacity: 0;
+    }
+    100% {
+        transform: rotate3d(-1,0,0,0deg);
+    }
+}
+/*-------------COUNTDOWN FLIP ANIMATION MINUTES-DAYS-HOURS--------------*/
+.bg-top-minutes{
+    animation: rotationTop; 
+    animation-duration: 1s;
+}
+.bg-bottom-minutes {
+    animation: rotationBottom; 
+    animation-duration: 1s; 
+    animation-delay: .5s;
+}
+@keyframes rotationTop{
+    0%{ transform: rotate3d(-1,0,0,0deg)
+    }
+    50%  {
+        transform: rotate3d(-1,0,0,0deg);
+    }
+    100% {
+        transform: rotate3d(-1,0,0,90deg);
+    }
+    }
+@keyframes rotationBottom{
+    0%{ transform: rotate3d(-1,0,0,-90deg)
+    }
+    50%  {
+        transform: rotate3d(-1,0,0,-90deg);
+        opacity: 0;
+    }
+    100% {
+        transform: rotate3d(-1,0,0,0deg);
+    }
+}
+/*--------FOOTER---------*/
 footer {
     position: absolute;
     bottom: 0;

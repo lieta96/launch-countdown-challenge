@@ -25,64 +25,60 @@
   </header>
   
   <section class="countdown">
-    
-    <!-- <div class="time-container" >
-      <p id="days" class="time"></p>
-      <p class="days time-text">Days</p>
-    </div>
-    <div class="time-container" >
-      <p id="hours" class="time"></p></p>
-      <p class="hours time-text">Hours</p>
-    </div>
-    <div class="time-container" >
-      <p id="minutes" class="time"></p>
-      <p class="minutes time-text">Minutes</p>
-    </div>
-    <div class="time-container" >
-      <p id="seconds" class="time"></p>
-      <p class="seconds time-text">Seconds</p>
-    </div> -->
 
     <div class="card-container">
       <div class="card">
-      <div class="bg-top"></div>
-      <div class="left-circle"></div>
-      <div class="right-circle"></div>
-      <div class="bg-bottom"></div>
-      <p id="days" class="time"></p>
-  </div>
-  <p class="time-text">Days</p>
-  </div>
+          <div class="bg-card">
+            <div class="bg-top bg-top-days"></div>
+            <div class="line"></div>
+            <div class="bg-bottom bg-bottom-days"></div>
+          </div>
+        <div class="left-circle"></div>
+        <div class="right-circle"></div>
+        <p id="days" class="time"></p>
+    </div>
+    <p class="days time-text">Days</p>
+    </div>
   
   <div class="card-container">
-      <div class="card">
-      <div class="bg-top"></div>
+    <div class="card">
+        <div class="bg-card">
+          <div class="bg-top bg-top-hours"></div>
+          <div class="line"></div>
+          <div class="bg-bottom bg-bottom-hours"></div>
+        </div>
       <div class="left-circle"></div>
       <div class="right-circle"></div>
-      <div class="bg-bottom"></div>
       <p id="hours" class="time"></p>
   </div>
   <p class="hours time-text">Hours</p>
   </div>
+
   <div class="card-container">
       <div class="card">
-      <div class="bg-top"></div>
+        <div class="bg-card">
+          <div class="bg-top" id="bg-top-minutes"></div>
+          <div class="line"></div>
+          <div class="bg-bottom " id="bg-bottom-minutes"></div>
+        </div>
       <div class="left-circle"></div>
       <div class="right-circle"></div>
-      <div class="bg-bottom"></div>
       <p id="minutes" class="time "></p>
   </div>
   <p class="minuntes time-text">Minutes</p>
   </div>
+
   <div class="card-container">
       <div class="card">
-      <div class="bg-top bg-top-seconds"></div>
-      
-      <div class="left-circle"></div>
-      <div class="right-circle"></div>
-      <div class="bg-bottom"></div>
-      <p id="seconds" class="time  seconds"></p>
-  </div>
+        <div class="bg-card">
+          <div class="bg-top bg-top-seconds"></div>
+          <div class="line"></div>
+          <div class="bg-bottom bg-bottom-seconds"></div>
+        </div>
+        <div class="left-circle"></div>
+        <div class="right-circle"></div>
+        <p id="seconds" class="time  seconds"></p>
+    </div>
   <p class="time-text">Seconds</p>
   </div>
 
