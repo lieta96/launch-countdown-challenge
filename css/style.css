@@ -144,17 +144,17 @@ body{
 }
 /*-----------COUNTDOWN FLIP ANIMATION SECONDS----------*/
 .bg-top-seconds{
-    animation: rotationTop; /* referring directly to the animation's @keyframe declaration */
+    animation: rotationTopSeconds; /* referring directly to the animation's @keyframe declaration */
     animation-duration: 1s; /* don't forget to set a duration! */
     animation-iteration-count: infinite
 }
 .bg-bottom-seconds {
-    animation: rotationBottom; /* referring directly to the animation's @keyframe declaration */
+    animation: rotationBottomSeconds; /* referring directly to the animation's @keyframe declaration */
     animation-duration: 1s; /* don't forget to set a duration! */
     animation-iteration-count: infinite;
     animation-delay: .5s;
 }
-@keyframes rotationTop{
+@keyframes rotationTopSeconds{
     0%{ transform: rotate3d(-1,0,0,0deg)
     }
     50%  {
@@ -164,7 +164,7 @@ body{
         transform: rotate3d(-1,0,0,90deg);
     }
     }
-@keyframes rotationBottom{
+@keyframes rotationBottomSeconds{
     0%{ transform: rotate3d(-1,0,0,-90deg)
     }
     50%  {
@@ -176,11 +176,11 @@ body{
     }
 }
 /*-------------COUNTDOWN FLIP ANIMATION MINUTES-DAYS-HOURS--------------*/
-.bg-top-minutes{
+.bg-top-animation{
     animation: rotationTop; 
     animation-duration: 1s;
 }
-.bg-bottom-minutes {
+.bg-bottom-animation {
     animation: rotationBottom; 
     animation-duration: 1s; 
     animation-delay: .5s;
