@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+ body {
+    perspective: 800px;
+}
+
+div {
+  width: 80px;
+  height: 80px;
+  background-color: skyblue;
+}
+
+.rotated {
+  transform: rotate3d(1, 2, -1, 192deg);
+  background-color: pink;
+}
+.rotate{
+            animation: rotation 4s infinite linear;
+            
+        }
+       
+        @keyframes rotation {
+        0%{ transform: rotate3d(1,0,0,0deg)
+
+        }
+          50%  {
+            transform: rotate3d(1,0,0,0deg);
+        }
+        100% {
+            transform: rotate3d(1,0,0,180deg);
+        }}
+</style>
+    <title>Document</title>
+</head>
+<body>
+  <div class="card-container">
+    <div class="card">
+        <div class="bg-card">
+          <div class="bg-top " id="bg-top-days"></div>
+          <div class="line"></div>
+          <div class="bg-bottom " id="bg-bottom-days"></div>
+        </div>
+      <div class="left-circle"></div>
+      <div class="right-circle"></div>
+      <p id="days" class="time"></p>
+  </div>
+  <p class="days time-text">Days</p>
+  </div>
+<!--HOURS-->
+<div class="card-container">
+  <div class="card">
+      <div class="bg-card">
+        <div class="bg-top " id="bg-top-hours"></div>
+        <div class="line"></div>
+        <div class="bg-bottom " id="bg-bottom-hours"></div>
+      </div>
+    <div class="left-circle"></div>
+    <div class="right-circle"></div>
+    <p id="hours" class="time"></p>
+</div>
+<p class="hours time-text"></p>
+</div>
+<!--MINUTES-->
+<div class="card-container"> 
+    <div class="card">
+      <div class="bg-card">
+        <div class="bg-top" id="bg-top-minutes"></div>
+        <div class="line"></div>
+        <div class="bg-bottom " id="bg-bottom-minutes"></div>
+      </div>
+    <div class="left-circle"></div>
+    <div class="right-circle"></div>
+    <p id="minutes" class="time "></p>
+</div>
+<p class="minuntes time-text"></p>
+</div>
+<!--SECONDS-->
+<div class="card-container">
+    <div class="card">
+      <div class="bg-card">
+        <div class="bg-top bg-top-seconds"></div>
+        <div class="line"></div>
+        <div class="bg-bottom bg-bottom-seconds"></div>
+      </div>
+      <div class="left-circle"></div>
+      <div class="right-circle"></div>
+      <p id="seconds" class="time  seconds"></p>
+  </div>
+<p class="time-text"></p>
+</div>
+    <script>
+    
+    // Set the date we're counting down to
+      let countDownDate = new Date("Feb, 05, 2021 08:48:00").getTime();
+      
+      // Update the count down every 1 second
+      let x = setInterval(countDown, 1000);
+
+      //idea obtener función que contavilice los días aparte 
+      function countDown() {
+      
+          // Get today's date and time
+         now = new Date().getTime();
+        
+          // Find the distance between now and the count down date
+         var distance = countDownDate - now;
+        
+          // Time calculations for days, hours, minutes and seconds
+        days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        seconds = Math.floor((distance % (1000 * 60)) / 1000);
+       
+        return days,hours,minutes,seconds;  
+        
+      };
+
+        let y = setInterval(innerCard, 1000);
+        
+        // Display the result in the element with each id
+        function innerCard(){
+          document.getElementById("days").innerHTML = days ;
+          document.getElementById("hours").innerHTML=hours;
+          document.getElementById("minutes").innerHTML=minutes;
+          document.getElementById("seconds").innerHTML=seconds;
+          //Add "0"
+          if (seconds <10){
+            document.getElementById("seconds").innerHTML="0"+seconds
+          }
+          if (minutes<10){
+            document.getElementById("minutes").innerHTML="0"+minutes
+          }
+          if (hours <10){
+            document.getElementById("hours").innerHTML="0"+hours
+          }
+    };
+    //If the count down is finished, write some text 
+      //   if (distance < 0) {
+      //  clearInterval(x); //NO FUNCIONA porque no me toma el DISTANCE
+      //  console.log("expiró");
+      //   };
+        
+      let z = setInterval(animation, 1000);
+      
+        function animation(){
+          // seconds animation
+          let bgTopMinutes=document.getElementById("bg-top-minutes");
+          let bgBottomMinutes=document.getElementById("bg-bottom-minutes");
+          
+          // Add or remove the animation class
+          if (seconds===0 && minutes>0){
+            bgTopMinutes.classList.add('bg-top-animation');  
+            bgBottomMinutes.classList.add('bg-bottom-animation')
+          }else if(bgTopMinutes.classList.contains("bg-top-animation")){
+            bgTopMinutes.classList.remove('bg-top-animation');
+            bgBottomMinutes.classList.remove('bg-bottom-animation');
+          };
+        } 
+              
+      </script>
+</body>
+</html>
