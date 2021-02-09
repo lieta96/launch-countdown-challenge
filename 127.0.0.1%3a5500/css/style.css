@@ -266,7 +266,7 @@ footer {
     }
     .bg-bottom{
         height: 60px;
-        width: 60px;
+        /* width: 60px; */
         border-radius: 5px;
     }
     .line{

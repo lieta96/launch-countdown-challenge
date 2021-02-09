@@ -1,54 +1,45 @@
 // Set the date we're counting down to
-let countDownDate = new Date("Mar, 08, 2021 00:00:00").getTime();
+let countDownDate = new Date("Feb, 07, 2021 21:59:00").getTime();
 
 // Update the count down every 1 second
 let x = setInterval(countDown, 1000);
+let time=[];
 
 function countDown() {
-
     // Get today's date and time
     now = new Date().getTime();
-  
     // Find the distance between now and the count down date
     distance = countDownDate - now;
-  
     // Time calculations for days, hours, minutes and seconds
     days = Math.floor(distance / (1000 * 60 * 60 * 24));
     hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    return days,hours, minutes, seconds;
+    // Stop the countDown
+    // if (distance<=0){
+    //   clearInterval(x);
+    // }
+    time=[days,hours, minutes, seconds];
+    return time, distance;
 };
+
+let elementTime =["days","hours","minutes", "seconds"];
 
 let y = setInterval(innerCard, 1000);
 
-// Display the result in the element with each id
+// Display the time in each card
 function innerCard(){
-  document.getElementById("days").innerHTML = days ;
-  document.getElementById("hours").innerHTML=hours;
-  document.getElementById("minutes").innerHTML=minutes;
-  document.getElementById("seconds").innerHTML=seconds;
-
-  //Add "0"
-  if (seconds <10){
-    document.getElementById("seconds").innerHTML="0"+seconds
+  for (let index = 0; index < elementTime.length; index++) {
+    document.getElementById (elementTime [index]).innerHTML=time[index];    
   }
-  if (minutes<10){
-    document.getElementById("minutes").innerHTML="0"+minutes
-  }
-  if (hours <10){
-    document.getElementById("hours").innerHTML="0"+hours
-  }
-
+  //Add "0" to seconds, minutes and hours when they're less than 10
+  for (let index = 1; index < elementTime.length; index++){
+    if (time [index]<10){
+    document.getElementById (elementTime [index]).innerHTML="0"+time[index]
+    };
+  };
 };
-
-//If the count down is finished, write some text 
-// if (distance < 0) {
-//    clearInterval(x); //NO FUNCIONA :'( no me toma el DISTANCE
-//    document.getElementById("main-title").innerHTML = "EXPIRED";
-// };
   
-
 //set interval to run the minutes, hours, days animation
 let z = setInterval(animation, 1000);
 
@@ -85,7 +76,7 @@ function animation (){
   let bgBottomDays=document.getElementById("bg-bottom-days");
 
   // Add or remove the days animation class
-  if (hours===0 && days>0 && minutes===0 &&seconds===0){
+  if (hours===0 && days>0 && minutes===0 && seconds===0){
     bgTopDays.classList.add('bg-top-animation');  
     bgBottomDays.classList.add('bg-bottom-animation')
   }else if( bgTopDays.classList.contains("bg-top-animation")){
@@ -93,7 +84,24 @@ function animation (){
     bgBottomDays.classList.remove('bg-bottom-animation');
   };
 
-}
+};
 
-//corregir: animation puede ser más optima, demasiado código repetido
-//finalizar contador
+// What happens when the coundDown expires 
+let w= setInterval(expired, 1000);
+
+function expired(){
+  if (distance<=0){
+    clearInterval(x); // finish CountDown
+    clearInterval(y);
+    //Complete cards with "00"
+    document.getElementById (elementTime [0]).innerHTML="0";
+    for (let index = 1; index < elementTime.length; index++) {
+      document.getElementById (elementTime [index]).innerHTML="00";    
+    }
+    // Remove seconds animation 
+    document.getElementById("bg-top-seconds").classList.remove('bg-top-seconds');
+    document.getElementById("bg-bottom-seconds").classList.remove('bg-bottom-seconds');
+    // Change title
+    document.getElementById("main-title").innerHTML="EXPIRED";
+  }
+};
