@@ -5,6 +5,32 @@ let countDownDate = new Date("Mar, 08, 2021 00:00:00").getTime();
 let x = setInterval(countDown, 1000);
 let time=[];
 
+
+let todayDate = new Date();
+let dd = String(todayDate.getDate()).padStart(2, '0');
+let mm = String(todayDate.getMonth() + 1).padStart(2, '0'); //January is 0!
+let yyyy = todayDate.getFullYear();
+
+todayDate = yyyy + '-' + mm + '-' + dd;
+console.log (todayDate)
+
+let setCountdownDate= document.getElementById('set-countdown-date');
+setCountdownDate.min=todayDate;
+setCountdownDate.value= todayDate;
+let setCountdowHour=document.getElementById('set-countdown-hour');
+let buttonSetCountdown =document.getElementById('button-set-countdown');
+let setCountdown=document.getElementById('set-countdown');
+let countdownSection=document.getElementById('countdown-section');
+
+buttonSetCountdown.addEventListener( 'click',(evt)=>{
+  evt.preventDefault();
+  if (setCountdownDate.value && setCountdowHour.value){
+    setCountdown.style.display='none';
+    countdownSection.style.display='inherit'
+  }
+})
+
+
 function countDown() {
     // Get today's date and time
     now = new Date().getTime();
@@ -32,7 +58,7 @@ function innerCard(){
   for (let index = 0; index < elementTime.length; index++) {
     document.getElementById (elementTime [index]).innerHTML=time[index];    
   }
-  //Add "0" to seconds, minutes and hours when they're less than 10
+  //Add "0" to seconds, minutes and hours when they're less than 10 //USAR PASTAR O ALGO ASÍ 
   for (let index = 1; index < elementTime.length; index++){
     if (time [index]<10){
     document.getElementById (elementTime [index]).innerHTML="0"+time[index]
@@ -43,7 +69,7 @@ function innerCard(){
 //set interval to run the minutes, hours, days animation
 let z = setInterval(animation, 1000);
 
-// Minutes Hours Days Countdown Animation
+// Minutes Hours Days Countdown Animation //cuando cambia la hora minutos y dias, compararlo con lo que guarde en html en lugar de tener tantos if!!!!
 function animation (){
   // minutes animation
   let bgTopMinutes=document.getElementById("bg-top-minutes");
@@ -88,7 +114,7 @@ function animation (){
 
 // What happens when the coundDown expires 
 let w= setInterval(expired, 1000);
-
+// meterlo adentro del contado!
 function expired(){
   if (distance<=0){
     clearInterval(x); // finish CountDown

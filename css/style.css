@@ -45,7 +45,50 @@ body{
     justify-content: center;
     align-items: center;
 }
+/*--------MODAL------*/
+.set-countdown{
+    background-color: hsl(236, 21%, 26%);
+    padding: 30px;
+    border-radius: 10px;
+    color: hsl(0, 0%, 100%);
+    text-transform: uppercase;
+    width: max-content;
+}
+.form-set-countdown{
+    display: flex;
+    flex-direction: column;
+}
+.form-set-countdown label, input{
+    margin: 20px;
+}
+.form-set-countdown input{
+    padding: 10px;
+    border-radius: 5px;
+    width: max-content;
+    margin: auto;
+    outline: none;
+    font-family:'Red Hat Text', sans-serif;
+    color: hsl(345, 95%, 68%);
+    border:0;
+}
+.button-set-countdown{
+    border-radius: 5px;
+    outline: none;
+    padding: 15px;
+    text-transform: uppercase;
+    width: min-content;
+    margin: auto;
+    margin-top:20px;
+    font-family: 'Red Hat Text', sans-serif;
+    background-color: #191a24;
+    border:0;
+    color:hsl(0, 0%, 100%);
+}
+
 /*------COUNTDOWN--------*/
+.countdown-section{
+    display: none;
+}
 .card-container{
     display: inline-flex;
     flex-direction: column;

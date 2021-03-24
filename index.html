@@ -20,7 +20,18 @@
 </style>
 </head>
 <body>
-  <header>  
+ 
+  <section class="set-countdown" id="set-countdown">
+    <form class="form-set-countdown"  onsubmit="return false">
+      <label for="start">Enter a new date</label>
+      <input type="date" id="set-countdown-date"  required>
+      <label for="appt">Pick a time</label>
+      <input type="time" id="set-countdown-hour" name="appt" required>
+      <button type='submit' class="button-set-countdown" id="button-set-countdown" > save </button>
+    </form>
+  </section>
+  <section id="countdown-section" class="countdown-section">
+    <header>  
     <h1 class="main-title" id="main-title"><span>We're launching</span> <br class="enter"> <span>soon</span> </h1>
   </header>
   
@@ -83,6 +94,8 @@
   </div>
 
   </section>
+  </section>
+  
   
   <footer >
     <div class="social-media">
