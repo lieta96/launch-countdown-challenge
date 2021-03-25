@@ -21,7 +21,7 @@
 </head>
 <body>
  
-  <section class="set-countdown" id="set-countdown">
+  <section class="set-countdown" id="set-countdown-section">
     <form class="form-set-countdown"  onsubmit="return false">
       <label for="start">Enter a new date</label>
       <input type="date" id="set-countdown-date"  required>
@@ -30,12 +30,16 @@
       <button type='submit' class="button-set-countdown" id="button-set-countdown" > save </button>
     </form>
   </section>
+
   <section id="countdown-section" class="countdown-section">
-    <header>  
+  
+  <header>
+    <button class="reset-countdown" id="reset-countdown">Reset</button>  
     <h1 class="main-title" id="main-title"><span>We're launching</span> <br class="enter"> <span>soon</span> </h1>
   </header>
   
   <section class="countdown">
+    
     <!--DAYS-->
     <div class="card-container">
       <div class="card">

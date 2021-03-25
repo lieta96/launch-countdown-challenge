@@ -1,64 +1,72 @@
-// Set the date we're counting down to
-let countDownDate = new Date("Mar, 08, 2021 00:00:00").getTime();
-
-// Update the count down every 1 second
-let x = setInterval(countDown, 1000);
-let time=[];
-
-
+// El modal en el que ingresamos la fecha del countdown lo seteamos para que no se pueda elegir un día anterior al corriente
 let todayDate = new Date();
 let dd = String(todayDate.getDate()).padStart(2, '0');
-let mm = String(todayDate.getMonth() + 1).padStart(2, '0'); //January is 0!
+let mm = String(todayDate.getMonth() + 1).padStart(2, '0'); 
 let yyyy = todayDate.getFullYear();
-
 todayDate = yyyy + '-' + mm + '-' + dd;
-console.log (todayDate)
-
 let setCountdownDate= document.getElementById('set-countdown-date');
+let setCountdowHour=document.getElementById('set-countdown-hour');
 setCountdownDate.min=todayDate;
 setCountdownDate.value= todayDate;
-let setCountdowHour=document.getElementById('set-countdown-hour');
 let buttonSetCountdown =document.getElementById('button-set-countdown');
-let setCountdown=document.getElementById('set-countdown');
+let setCountdownSection=document.getElementById('set-countdown-section');
 let countdownSection=document.getElementById('countdown-section');
 
+let elementTime =["days","hours","minutes", "seconds"];
+
 buttonSetCountdown.addEventListener( 'click',(evt)=>{
+  // Evitamos que se recargue la página al hacer click en el botón
   evt.preventDefault();
+  // Si se ingresó una fecha y una hora, guardamos estos valores en una variable para iniciar el countdown
   if (setCountdownDate.value && setCountdowHour.value){
-    setCountdown.style.display='none';
+    // Escondemos el modal
+    setCountdownSection.style.display='none';
+    //Mostramos en pantalla la sección del countdown
     countdownSection.style.display='inherit'
-  }
+    let countDownDate= new Date(`${setCountdownDate.value}T${setCountdowHour.value}:00`).getTime();
+    document.getElementById("main-title").innerHTML=`<span>We're launching</span> <br class="enter"> <span>soon</span>`
+    
+    // Iniciamos el countdown
+    startCountDown (countDownDate)
+  } 
 })
 
+function startCountDown (date){
+    function countDownReal (){countDown(date)}
+    let x = setInterval(countDownReal, 1000);
+    let y = setInterval(innerCard, 1000);
+    let z = setInterval(animation, 1000);
+    function expiredReal (){expired(x,y,z)}
+    let w= setInterval(expiredReal, 1000);
+    return x, y,z,w
+}
 
-function countDown() {
+// Esta función calcula el valor que debe aparecer en cada tarjeta y depende de la varible "date", será la fecha que ingresemos a través del modal
+
+function countDown(date) {
+
     // Get today's date and time
     now = new Date().getTime();
     // Find the distance between now and the count down date
-    distance = countDownDate - now;
+    distance = date - now;
     // Time calculations for days, hours, minutes and seconds
     days = Math.floor(distance / (1000 * 60 * 60 * 24));
     hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    // Stop the countDown
-    // if (distance<=0){
-    //   clearInterval(x);
-    // }
+  
     time=[days,hours, minutes, seconds];
+    
     return time, distance;
 };
 
-let elementTime =["days","hours","minutes", "seconds"];
 
-let y = setInterval(innerCard, 1000);
-
-// Display the time in each card
+// Mostramos el tiempo en cada tarjeta
 function innerCard(){
   for (let index = 0; index < elementTime.length; index++) {
-    document.getElementById (elementTime [index]).innerHTML=time[index];    
+  document.getElementById (elementTime [index]).innerHTML=time[index];    
   }
-  //Add "0" to seconds, minutes and hours when they're less than 10 //USAR PASTAR O ALGO ASÍ 
+  //Add "0" to seconds, minutes and hours when they're less than 10  
   for (let index = 1; index < elementTime.length; index++){
     if (time [index]<10){
     document.getElementById (elementTime [index]).innerHTML="0"+time[index]
@@ -66,8 +74,6 @@ function innerCard(){
   };
 };
   
-//set interval to run the minutes, hours, days animation
-let z = setInterval(animation, 1000);
 
 // Minutes Hours Days Countdown Animation //cuando cambia la hora minutos y dias, compararlo con lo que guarde en html en lugar de tener tantos if!!!!
 function animation (){
@@ -113,12 +119,11 @@ function animation (){
 };
 
 // What happens when the coundDown expires 
-let w= setInterval(expired, 1000);
-// meterlo adentro del contado!
-function expired(){
+function expired(x,y,z){
   if (distance<=0){
     clearInterval(x); // finish CountDown
     clearInterval(y);
+    clearInterval(z);
     //Complete cards with "00"
     document.getElementById (elementTime [0]).innerHTML="0";
     for (let index = 1; index < elementTime.length; index++) {
@@ -131,3 +136,15 @@ function expired(){
     document.getElementById("main-title").innerHTML="EXPIRED";
   }
 };
+
+// Reset Countdown
+let resetCountdown=document.getElementById('reset-countdown');
+
+resetCountdown.addEventListener('click',()=>  
+  {
+    // Escondemos el modal
+    setCountdownSection.style.display='inherit';
+    //Mostramos en pantalla la sección del countdown
+    countdownSection.style.display='none';
+  }
+)
