@@ -42,8 +42,7 @@ function startCountDown (date){
         resetDate=false;
         console.log (resetDate)
         clearInterval(w)
-        return resetDate
-      }return resetDate,w
+      }
     }, 1000);
 }
 
