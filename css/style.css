@@ -323,8 +323,6 @@ footer {
         height: 60px;
         width: 60px;
         border-radius: 5px;
-        border-bottom: solid 1px hsl(234, 17%, 12%);
-
     }
     .bg-bottom{
         height: 60px;
@@ -338,6 +336,7 @@ footer {
             margin: 10px;
     }
     .left-circle {
+        z-index: 10000000024;
         position: absolute;
         width: 2px;
         height: 4px;
@@ -345,6 +344,7 @@ footer {
         border-top-right-radius:20px;
         }
     .right-circle {
+        z-index: 10000000024;
         position: absolute;
         width: 2px; 
         height: 4px;
@@ -352,6 +352,7 @@ footer {
         border-top-left-radius:20px;
     }
     .time{
+        z-index:10000000000;
         margin: 10px;;
         font-size: 30px;
     }

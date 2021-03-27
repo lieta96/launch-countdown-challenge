@@ -1,5 +1,6 @@
 // El modal en el que ingresamos la fecha del countdown lo seteamos para que no se pueda elegir un día anterior al corriente
 let todayDate = new Date();
+
 let dd = String(todayDate.getDate()).padStart(2, '0');
 let mm = String(todayDate.getMonth() + 1).padStart(2, '0'); 
 let yyyy = todayDate.getFullYear();
@@ -21,7 +22,7 @@ buttonSetCountdown.addEventListener( 'click',(evt)=>{
   // Evitamos que se recargue la página al hacer click en el botón
   evt.preventDefault();
   // Si se ingresó una fecha y una hora, guardamos estos valores en una variable para iniciar el countdown
-  if (setCountdownDate.value && setCountdowHour.value){
+  if (setCountdownDate.value && setCountdowHour.value ){
     // Escondemos el modal
     setCountdownSection.style.display='none';
     // Mostramos en pantalla la sección del countdown
@@ -34,16 +35,16 @@ buttonSetCountdown.addEventListener( 'click',(evt)=>{
   } 
 })
 function startCountDown (date){
-    let x = setInterval(()=>{countDown(date)}, 1000);
-    let w= setInterval(()=>{
-      expired (x)
-      if (resetDate){
-        clearInterval(x);
-        resetDate=false;
-        console.log (resetDate)
-        clearInterval(w)
-      }
-    }, 1000);
+  let x = setInterval(()=>{countDown(date)}, 1000);
+  let w= setInterval(()=>{
+    expired (x)
+    if (resetDate){
+      clearInterval(x);
+      resetDate=false;
+      console.log (resetDate)
+      clearInterval(w)
+    }
+  }, 1000);
 }
 
 // Esta función calcula el valor que debe aparecer en cada tarjeta y depende de la varible "date", será la fecha que ingresemos a través del modal
@@ -67,6 +68,7 @@ function countDown(date) {
 
 // Mostramos el tiempo en cada tarjeta
 function innerCard(){
+ 
   for (let index = 0; index < elementTime.length; index++) {
   document.getElementById (elementTime [index]).innerHTML=time[index];    
   }
@@ -86,7 +88,10 @@ function animation (){
   let bgBottomMinutes=document.getElementById("bg-bottom-minutes");
   
   // Add or remove the minutes animation class
-  if (seconds===0 && minutes>0){
+  if (days===0 && hours===0 && minutes===0){
+    // no ejecutamos nada
+  }
+  else if(seconds===0){
     bgTopMinutes.classList.add('bg-top-animation');  
     bgBottomMinutes.classList.add('bg-bottom-animation')
   }else if(bgTopMinutes.classList.contains("bg-top-animation")){
@@ -99,7 +104,10 @@ function animation (){
   let bgBottomHours=document.getElementById("bg-bottom-hours");
 
   // Add or remove the hours animation class
-  if (minutes===0 && hours>0 && seconds===0){
+  if (days===0 && hours===0){
+    //no ejecuta nada
+  }
+  else if ( minutes===0 && seconds===0){
     bgTopHours.classList.add('bg-top-animation');  
     bgBottomHours.classList.add('bg-bottom-animation')
   }else if( bgTopHours.classList.contains("bg-top-animation")){
